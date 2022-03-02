@@ -10,6 +10,70 @@ let gameState = {
   currentPlayer: 0, // switch to 1 when the player swaps
 };
 
+let firstPlayer = {
+  playerName: "First Player",
+};
+
+let secondPlayer = {
+  playerName: "Second Player",
+};
+
+let pitZero = {
+  pipNumber: board[0],
+};
+
+let pitOne = {
+  pipNumber: board[1],
+};
+
+let pitTwo = {
+  pipNumber: board[2],
+};
+
+let pitThree = {
+  pipNumber: board[3],
+};
+
+let pitFour = {
+  pipNumber: board[4],
+};
+
+let pitFive = {
+  pipNumber: board[5],
+};
+
+let mancalaSix = {
+  pipNumber: board[6],
+};
+
+let pitSeven = {
+  pipNumber: board[7],
+};
+
+let pitEight = {
+  pipNumber: board[8],
+};
+
+let pitNine = {
+  pipNumber: board[9],
+};
+
+let pitTen = {
+  pipNumber: board[10],
+};
+
+let pitEleven = {
+  pipNumber: board[11],
+};
+
+let pitTwelve = {
+  pipNumber: board[12],
+};
+
+let mancalaThirteen = {
+  pipNumber: board[13],
+};
+
 function buildInitialState() {}
 
 //rerender game after selecting pips
@@ -23,33 +87,70 @@ function onBoardClick() {
 
   renderState(); // show the user the new state
 }
+
+//GAME TITLE
+//Name of game Mancala
+const title = document.createElement("div");
+title.classList.add("title");
+board.appendChild(title);
+title.innerText = "MANCALA";
+
 //RESET BUTTON
 //  Resets to initial state
+const resetButton = document.createElement("button");
+resetButton.classList.add("reset");
+board.appendChild(resetButton);
+resetButton.innerText = "Reset";
 
 //ONE or TWO PLAYER TOGGLE BUTTON
 //  If one player, only active side will be bottom side (default)
 //  If two player, either side will be active based on who is active player
+const playerNumBtn = document.createElement("button");
+button.classList.add("playerNumber");
+board.appendChild(button);
+button.innerText = "Player Number";
 
 //PLAYER NAMES
 // Click to rename Player
 //      When Solo, only Player One will will be able to renamed
 //      When Two Player, Both Player Names can be edited
+const firstPlayer = document.createElement("div");
+firstPlayer.classList.add("playerOne");
+board.appendChild(firstPlayer);
+firstPlayer.innerText = firstPlayer.playerName;
 
 //ACTIVE PLAYER
+const activePlayer = document.createElement("div");
+activePlayer.classList.add("activePlayer");
+board.appendChild(activePlayer);
+activePlayer.innerText = gameState.currentPlayer;
 
 //BOARD
 const board = document.getElementById("board");
 board.addEventListener("click", onBoardClick);
 
-//OUTERBOARD
+//OUTER BOARD
 //  # of Pips in each Pit
+const outerBoard = document.createElement("div");
+outerBoard.classList.add("outerBoard");
+board.appendChild(outerBoard);
 
-//INNERBOARD
+//PIP COUNTERS
+const pipCounter = document.createElement("div");
+pipCounter.classList.add("pipCounter");
+pipCounter.setAttribute("id", "pipCounterZero");
+outerBoard.appendChild(pipCounter);
+pipCounter.innerText = pitZero.pipNumber;
+
+//INNER BOARD
 //  pit and mancala with pips when applicable
 
 //PIT
 //rounded square to hold pips
 //clickable when pips are present
+const pit = document.createElement("div");
+pit.classList.add(pit);
+pit.setAttribute("id", "pitZero");
 
 //MANCALA
 
@@ -93,4 +194,16 @@ board.addEventListener("click", onBoardClick);
 
 // Announce when and who wins or if there is a draw
 
-//
+//loop
+
+/*const alpha = "abcdefg";
+
+const searchTerm = "a";
+const shiftAmtt = 2;
+const indexOfFirst = alpha.indexOf(searchTerm);
+const newIndex = indexOfFirst + (shiftAmtt % alpha.length);
+const newLetter = alpha[newIndex];
+//modulous operator
+//-------------> ex. 7 % 6
+
+console.log({ searchTerm, indexOfFirst, newIndex, newLetter });*/
