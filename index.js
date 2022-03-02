@@ -1,6 +1,5 @@
 //BOARD
 const board = document.querySelector(".board");
-
 // board.addEventListener("click", onBoardClick);
 // game object
 const playField = [
@@ -92,42 +91,33 @@ function onBoardClick() {
   renderState(); // show the user the new state
 }
 
-//GAME TITLE
-//Name of game Mancala
-const title = document.createElement("div");
-title.classList.add("title");
-board.appendChild(title);
-title.innerText = "MANCALA";
-console.log(board);
+//TOP BAR
+//  Where reset button, game title and toggle button are located
+const topBar = document.createElement("div");
+topBar.classList.add("topBar");
+board.appendChild(topBar);
 
 //RESET BUTTON
 //  Resets to initial state
 const resetButton = document.createElement("button");
 resetButton.classList.add("reset");
-board.appendChild(resetButton);
+topBar.appendChild(resetButton);
 resetButton.innerText = "Reset";
+
+//GAME TITLE
+//Name of game Mancala
+const title = document.createElement("div");
+title.classList.add("title");
+topBar.appendChild(title);
+title.innerText = "MANCALA";
 
 //ONE or TWO PLAYER TOGGLE BUTTON
 //  If one player, only active side will be bottom side (default)
 //  If two player, either side will be active based on who is active player
 const playerNumBtn = document.createElement("button");
 playerNumBtn.classList.add("playerNumber");
-board.appendChild(playerNumBtn);
+topBar.appendChild(playerNumBtn);
 playerNumBtn.innerText = "Player Number";
-
-//PLAYER NAMES
-// Click to rename Player
-//      When Solo, only Player One will will be able to renamed
-//      When Two Player, Both Player Names can be edited
-const firstPlayer = document.createElement("div");
-firstPlayer.classList.add("playerOne");
-board.appendChild(firstPlayer);
-firstPlayer.innerText = first_Player.playerName;
-
-const secondPlayer = document.createElement("div");
-secondPlayer.classList.add("playerTwo");
-board.appendChild(secondPlayer);
-secondPlayer.innerText = second_Player.playerName;
 
 //ACTIVE PLAYER
 const activePlayer = document.createElement("div");
@@ -135,41 +125,98 @@ activePlayer.classList.add("activePlayer");
 board.appendChild(activePlayer);
 activePlayer.innerText = gameState.currentPlayer;
 
-//OUTER BOARD
+//UPPER BAR
+const upperBar = document.createElement("div");
+upperBar.classList.add("upperBar");
+board.appendChild(upperBar);
+
+//FIRST PLAYER NAME
+// Click to rename Player
+//      When Solo, only Player One will will be able to renamed
+//      When Two Player, Both Player Names can be edited
+const firstPlayer = document.createElement("div");
+firstPlayer.classList.add("playerOne");
+upperBar.appendChild(firstPlayer);
+firstPlayer.innerText = first_Player.playerName;
+
+//PLAY AREA
 //  # of Pips in each Pit
-const outerBoard = document.createElement("div");
-outerBoard.classList.add("outerBoard");
-board.appendChild(outerBoard);
+const playArea = document.createElement("div");
+playArea.classList.add("playArea");
+board.appendChild(playArea);
 
 //PIP COUNTERS
 const pipCounter = document.createElement("div");
 pipCounter.classList.add("pipCounter");
 pipCounter.setAttribute("id", "pipCounterZero");
-outerBoard.appendChild(pipCounter);
+playArea.appendChild(pipCounter);
 pipCounter.innerText = pitZero.pipNumber;
 
-//INNER BOARD
+//ACTION FIELD
 //  pit and mancala with pips when applicable
-const innerBoard = document.createElement("div");
-innerBoard.classList.add("innerBoard");
-board.appendChild(innerBoard);
+const actionField = document.createElement("div");
+actionField.classList.add("actionField");
+playArea.appendChild(actionField);
 
-//PIT
+//PIT FIELD
+const pitField = document.createElement("div");
+pitField.classList.add("pitField");
+pitField.setAttribute("id", "pitZero");
+actionField.appendChild(pitField);
+
+//PLAYER PIT FIELD
 //rounded square to hold pips
 //clickable when pips are present
-const pit = document.createElement("div");
-pit.classList.add("pit");
-pit.setAttribute("id", "pitZero");
+const playerPitField = document.createElement("div");
+playerPitField.classList.add("playerPitField");
+playerPitField.setAttribute("id", "pitZero");
+pitField.appendChild(playerPitField);
 
-//MANCALA
-const mancala = document.createElement("div");
-mancala.classList.add("mancala");
-mancala.setAttribute("id", "mancalaSix");
+//PLAYER PITS
+const playerPit = document.createElement("div");
+playerPit.classList.add("playerPit");
+playerPit.setAttribute("id", "pitZero");
+playerPitField.appendChild(playerPit);
+
+//OPPONENT PIT FIELD
+const opponentPitField = document.createElement("div");
+opponentPitField.classList.add("opponentPitField");
+opponentPitField.setAttribute("id", "pitZero");
+pitField.appendChild(opponentPitField);
+
+//OPPONENT PITS
+const opponentPitField = document.createElement("div");
+opponentPitField.classList.add("opponentPitField");
+opponentPitField.setAttribute("id", "pitZero");
+pitField.appendChild(opponentPitField);
+
+//PLAYER MANCALA
+const playerMancala = document.createElement("div");
+playerMancala.classList.add("playerMancala");
+playerMancala.setAttribute("id", "mancalaSix");
+actionField.appendChild(playerMancala);
+
+//OPPONENT MANCALA
+const opponentMancala = document.createElement("div");
+opponentMancala.classList.add("opponentMancala");
+opponentMancala.setAttribute("id", "mancalaThirteen");
+actionField.appendChild(opponentMancala);
 
 //PIP
 const pip = document.createElement("div");
 pip.classList.add("pip");
 pip.setAttribute("id", "pip");
+
+//LOWER BAR
+const lowerBar = document.createElement("div");
+lowerBar.classList.add("lowerBar");
+board.appendChild(lowerBar);
+
+//SECOND PLAYER NAME
+const secondPlayer = document.createElement("div");
+secondPlayer.classList.add("playerTwo");
+lowerBar.appendChild(secondPlayer);
+secondPlayer.innerText = second_Player.playerName;
 
 //extra turn when ending in own mancala
 

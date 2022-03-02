@@ -11,5 +11,47 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.upperBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.playerOne {
+  display: flex;
+  align-self: flex-start;
+}
+
+.activePlayer {
+  display: flex;
+  align-self: center;
+}
+
+.playArea {
+  display: flex;
+}
+
+.actionField {
+  display: flex;
+}
+
+.lowerBar {
+  display: flex;
+  justify-content: flex-end;
 }
