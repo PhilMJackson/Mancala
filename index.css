@@ -1,2 +1,15 @@
+* {
+  box-sizing: border-box;
+  font-family: "Nothing You Could Do", cursive;
+}
+
+html {
+  background-color: #222;
+  color: white;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

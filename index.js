@@ -1,5 +1,9 @@
+//BOARD
+const board = document.querySelector(".board");
+
+// board.addEventListener("click", onBoardClick);
 // game object
-const board = [
+const playField = [
   4, 4, 4, 4, 4, 4, 0, /* player 1 */ 4, 4, 4, 4, 4, 4, 0 /* player 2 */,
 ];
 //index 6 & 13 === mancalas
@@ -10,11 +14,11 @@ let gameState = {
   currentPlayer: 0, // switch to 1 when the player swaps
 };
 
-let firstPlayer = {
+let first_Player = {
   playerName: "First Player",
 };
 
-let secondPlayer = {
+let second_Player = {
   playerName: "Second Player",
 };
 
@@ -94,6 +98,7 @@ const title = document.createElement("div");
 title.classList.add("title");
 board.appendChild(title);
 title.innerText = "MANCALA";
+console.log(board);
 
 //RESET BUTTON
 //  Resets to initial state
@@ -106,9 +111,9 @@ resetButton.innerText = "Reset";
 //  If one player, only active side will be bottom side (default)
 //  If two player, either side will be active based on who is active player
 const playerNumBtn = document.createElement("button");
-button.classList.add("playerNumber");
-board.appendChild(button);
-button.innerText = "Player Number";
+playerNumBtn.classList.add("playerNumber");
+board.appendChild(playerNumBtn);
+playerNumBtn.innerText = "Player Number";
 
 //PLAYER NAMES
 // Click to rename Player
@@ -117,17 +122,18 @@ button.innerText = "Player Number";
 const firstPlayer = document.createElement("div");
 firstPlayer.classList.add("playerOne");
 board.appendChild(firstPlayer);
-firstPlayer.innerText = firstPlayer.playerName;
+firstPlayer.innerText = first_Player.playerName;
+
+const secondPlayer = document.createElement("div");
+secondPlayer.classList.add("playerTwo");
+board.appendChild(secondPlayer);
+secondPlayer.innerText = second_Player.playerName;
 
 //ACTIVE PLAYER
 const activePlayer = document.createElement("div");
 activePlayer.classList.add("activePlayer");
 board.appendChild(activePlayer);
 activePlayer.innerText = gameState.currentPlayer;
-
-//BOARD
-const board = document.getElementById("board");
-board.addEventListener("click", onBoardClick);
 
 //OUTER BOARD
 //  # of Pips in each Pit
@@ -144,19 +150,26 @@ pipCounter.innerText = pitZero.pipNumber;
 
 //INNER BOARD
 //  pit and mancala with pips when applicable
+const innerBoard = document.createElement("div");
+innerBoard.classList.add("innerBoard");
+board.appendChild(innerBoard);
 
 //PIT
 //rounded square to hold pips
 //clickable when pips are present
 const pit = document.createElement("div");
-pit.classList.add(pit);
+pit.classList.add("pit");
 pit.setAttribute("id", "pitZero");
 
 //MANCALA
+const mancala = document.createElement("div");
+mancala.classList.add("mancala");
+mancala.setAttribute("id", "mancalaSix");
 
-//PIPS
-
-//display number of pips in wells & each mancala
+//PIP
+const pip = document.createElement("div");
+pip.classList.add("pip");
+pip.setAttribute("id", "pip");
 
 //extra turn when ending in own mancala
 
