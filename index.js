@@ -22,59 +22,59 @@ let second_Player = {
 };
 
 let pitZero = {
-  pipNumber: board[0],
+  pipNumber: playField[0],
 };
 
 let pitOne = {
-  pipNumber: board[1],
+  pipNumber: playField[1],
 };
 
 let pitTwo = {
-  pipNumber: board[2],
+  pipNumber: playField[2],
 };
 
 let pitThree = {
-  pipNumber: board[3],
+  pipNumber: playField[3],
 };
 
 let pitFour = {
-  pipNumber: board[4],
+  pipNumber: playField[4],
 };
 
 let pitFive = {
-  pipNumber: board[5],
+  pipNumber: playField[5],
 };
 
 let mancalaSix = {
-  pipNumber: board[6],
+  pipNumber: playField[6],
 };
 
 let pitSeven = {
-  pipNumber: board[7],
+  pipNumber: playField[7],
 };
 
 let pitEight = {
-  pipNumber: board[8],
+  pipNumber: playField[8],
 };
 
 let pitNine = {
-  pipNumber: board[9],
+  pipNumber: playField[9],
 };
 
 let pitTen = {
-  pipNumber: board[10],
+  pipNumber: playField[10],
 };
 
 let pitEleven = {
-  pipNumber: board[11],
+  pipNumber: playField[11],
 };
 
 let pitTwelve = {
-  pipNumber: board[12],
+  pipNumber: playField[12],
 };
 
 let mancalaThirteen = {
-  pipNumber: board[13],
+  pipNumber: playField[13],
 };
 
 function buildInitialState() {}
@@ -145,18 +145,144 @@ const playArea = document.createElement("div");
 playArea.classList.add("playArea");
 board.appendChild(playArea);
 
-//PIP COUNTERS
-const pipCounter = document.createElement("div");
-pipCounter.classList.add("pipCounter");
-pipCounter.setAttribute("id", "pipCounterZero");
-playArea.appendChild(pipCounter);
-pipCounter.innerText = pitZero.pipNumber;
+//PLAYER PIP COUNTER FIELD
+const playerPipCounterField = document.createElement("div");
+playerPipCounterField.classList.add("pipCounterField");
+playerPipCounterField.classList.add("playerPipCounterField");
+playArea.appendChild(playerPipCounterField);
+
+//PLAYER PIP COUNTER
+//  pipCounterZero
+const playerPipCounterZero = document.createElement("div");
+playerPipCounterZero.classList.add("pipCounter");
+playerPipCounterZero.classList.add("playerPipCounter");
+playerPipCounterZero.setAttribute("id", "pipCounterZero");
+playerPipCounterField.appendChild(playerPipCounterZero);
+playerPipCounterZero.innerText = pitZero.pipNumber;
+
+//  pipCounterOne
+const playerPipCounterOne = document.createElement("div");
+playerPipCounterOne.classList.add("pipCounter");
+playerPipCounterOne.classList.add("playerPipCounter");
+playerPipCounterOne.setAttribute("id", "pipCounterOne");
+playerPipCounterField.appendChild(playerPipCounterOne);
+playerPipCounterOne.innerText = pitOne.pipNumber;
+
+//  pipCounterTwo
+const playerPipCounterTwo = document.createElement("div");
+playerPipCounterTwo.classList.add("pipCounter");
+playerPipCounterTwo.classList.add("playerPipCounter");
+playerPipCounterTwo.setAttribute("id", "pipCounterTwo");
+playerPipCounterField.appendChild(playerPipCounterTwo);
+playerPipCounterTwo.innerText = pitTwo.pipNumber;
+
+//  pipCounterThree
+const playerPipCounterThree = document.createElement("div");
+playerPipCounterThree.classList.add("pipCounter");
+playerPipCounterThree.classList.add("playerPipCounter");
+playerPipCounterThree.setAttribute("id", "pipCounterThree");
+playerPipCounterField.appendChild(playerPipCounterThree);
+playerPipCounterThree.innerText = pitThree.pipNumber;
+
+//  pipCounterFour
+const playerPipCounterFour = document.createElement("div");
+playerPipCounterFour.classList.add("pipCounter");
+playerPipCounterFour.classList.add("playerPipCounter");
+playerPipCounterFour.setAttribute("id", "pipCounterFour");
+playerPipCounterField.appendChild(playerPipCounterFour);
+playerPipCounterFour.innerText = pitFour.pipNumber;
+
+//  pipCounterFive
+const playerPipCounterFive = document.createElement("div");
+playerPipCounterFive.classList.add("pipCounter");
+playerPipCounterFive.classList.add("playerPipCounter");
+playerPipCounterFive.setAttribute("id", "pipCounterFive");
+playerPipCounterField.appendChild(playerPipCounterFive);
+playerPipCounterFive.innerText = pitFive.pipNumber;
+
+//  pipCounterSix
+const playerPipCounterSix = document.createElement("div");
+playerPipCounterSix.classList.add("pipCounter");
+playerPipCounterSix.classList.add("playerPipCounter");
+playerPipCounterSix.setAttribute("id", "pipCounterSix");
+playerPipCounterField.appendChild(playerPipCounterSix);
+playerPipCounterSix.innerText = mancalaSix.pipNumber;
 
 //ACTION FIELD
 //  pit and mancala with pips when applicable
 const actionField = document.createElement("div");
 actionField.classList.add("actionField");
 playArea.appendChild(actionField);
+
+//OPPONENT PIP COUNTER FIELD
+const opponentPipCounterField = document.createElement("div");
+opponentPipCounterField.classList.add("pipCounterField");
+opponentPipCounterField.setAttribute("id", "opponentPipCounterField");
+playArea.appendChild(opponentPipCounterField);
+
+//OPPONENT PIP COUNTERS
+//  pipCounterSeven
+const opponentPipCounterSeven = document.createElement("div");
+opponentPipCounterSeven.classList.add("pipCounter");
+opponentPipCounterSeven.classList.add("opponentPipCounter");
+opponentPipCounterSeven.setAttribute("id", "pipCounterSeven");
+opponentPipCounterField.appendChild(opponentPipCounterSeven);
+opponentPipCounterSeven.innerText = pitSeven.pipNumber;
+
+//  pipCounterEight
+const opponentPipCounterEight = document.createElement("div");
+opponentPipCounterEight.classList.add("pipCounter");
+opponentPipCounterEight.classList.add("opponentPipCounter");
+opponentPipCounterEight.setAttribute("id", "pipCounterEight");
+opponentPipCounterField.appendChild(opponentPipCounterEight);
+opponentPipCounterEight.innerText = pitEight.pipNumber;
+
+//  pipCounterNine
+const opponentPipCounterNine = document.createElement("div");
+opponentPipCounterNine.classList.add("pipCounter");
+opponentPipCounterNine.classList.add("opponentPipCounter");
+opponentPipCounterNine.setAttribute("id", "pipCounterNine");
+opponentPipCounterField.appendChild(opponentPipCounterNine);
+opponentPipCounterNine.innerText = pitNine.pipNumber;
+
+//  pipCounterTen
+const opponentPipCounterTen = document.createElement("div");
+opponentPipCounterTen.classList.add("pipCounter");
+opponentPipCounterTen.classList.add("opponentPipCounter");
+opponentPipCounterTen.setAttribute("id", "pipCounterTen");
+opponentPipCounterField.appendChild(opponentPipCounterTen);
+opponentPipCounterTen.innerText = pitTen.pipNumber;
+
+//  pipCounterEleven
+const opponentPipCounterEleven = document.createElement("div");
+opponentPipCounterEleven.classList.add("pipCounter");
+opponentPipCounterEleven.classList.add("opponentPipCounter");
+opponentPipCounterEleven.setAttribute("id", "pipCounterEleven");
+opponentPipCounterField.appendChild(opponentPipCounterEleven);
+opponentPipCounterEleven.innerText = pitEleven.pipNumber;
+
+//  pipCounterTwelve
+const opponentPipCounterTwelve = document.createElement("div");
+opponentPipCounterTwelve.classList.add("pipCounter");
+opponentPipCounterTwelve.classList.add("opponentPipCounter");
+opponentPipCounterTwelve.setAttribute("id", "pipCounterTwelve");
+opponentPipCounterField.appendChild(opponentPipCounterTwelve);
+opponentPipCounterTwelve.innerText = pitTwelve.pipNumber;
+
+//  marginPipCounterThirteen
+const opponentPipCounterThirteen = document.createElement("div");
+opponentPipCounterThirteen.classList.add("pipCounter");
+opponentPipCounterThirteen.classList.add("opponentPipCounter");
+opponentPipCounterThirteen.setAttribute("id", "pipCounterThirteen");
+opponentPipCounterField.appendChild(opponentPipCounterThirteen);
+opponentPipCounterThirteen.innerText = mancalaThirteen.pipNumber;
+
+//PLAYER MANCALA
+const playerMancala = document.createElement("div");
+playerMancala.classList.add("mancala");
+playerMancala.classList.add("playerMancala");
+playerMancala.setAttribute("id", "mancalaSix");
+actionField.appendChild(playerMancala);
 
 //PIT FIELD
 const pitField = document.createElement("div");
@@ -168,36 +294,105 @@ actionField.appendChild(pitField);
 //rounded square to hold pips
 //clickable when pips are present
 const playerPitField = document.createElement("div");
+playerPitField.classList.add("singlePitField");
 playerPitField.classList.add("playerPitField");
-playerPitField.setAttribute("id", "pitZero");
 pitField.appendChild(playerPitField);
 
 //PLAYER PITS
-const playerPit = document.createElement("div");
-playerPit.classList.add("playerPit");
-playerPit.setAttribute("id", "pitZero");
-playerPitField.appendChild(playerPit);
+//  pitZero
+const playerPitZero = document.createElement("div");
+playerPitZero.classList.add("pit");
+playerPitZero.classList.add("playerPitZero");
+playerPitZero.setAttribute("id", "pitZero");
+playerPitField.appendChild(playerPitZero);
+
+//  pitOne
+const playerPitOne = document.createElement("div");
+playerPitOne.classList.add("pit");
+playerPitOne.classList.add("playerPitOne");
+playerPitOne.setAttribute("id", "pitOne");
+playerPitField.appendChild(playerPitOne);
+
+//  pitTwo
+const playerPitTwo = document.createElement("div");
+playerPitTwo.classList.add("pit");
+playerPitTwo.classList.add("playerPitTwo");
+playerPitTwo.setAttribute("id", "pitTwo");
+playerPitField.appendChild(playerPitTwo);
+
+//  pitThree
+const playerPitThree = document.createElement("div");
+playerPitThree.classList.add("pit");
+playerPitThree.classList.add("playerPitThree");
+playerPitThree.setAttribute("id", "pitThree");
+playerPitField.appendChild(playerPitThree);
+
+//  pitFour
+const playerPitFour = document.createElement("div");
+playerPitFour.classList.add("pit");
+playerPitFour.classList.add("playerPitFour");
+playerPitFour.setAttribute("id", "pitFour");
+playerPitField.appendChild(playerPitFour);
+
+//  pitFive
+const playerPitFive = document.createElement("div");
+playerPitFive.classList.add("pit");
+playerPitFive.classList.add("playerPitFive");
+playerPitFive.setAttribute("id", "pitFive");
+playerPitField.appendChild(playerPitFive);
 
 //OPPONENT PIT FIELD
 const opponentPitField = document.createElement("div");
+opponentPitField.classList.add("singlePitField");
 opponentPitField.classList.add("opponentPitField");
-opponentPitField.setAttribute("id", "pitZero");
 pitField.appendChild(opponentPitField);
 
 //OPPONENT PITS
-const opponentPitField = document.createElement("div");
-opponentPitField.classList.add("opponentPitField");
-opponentPitField.setAttribute("id", "pitZero");
-pitField.appendChild(opponentPitField);
+//  pitSeven
+const opponentPitSeven = document.createElement("div");
+opponentPitSeven.classList.add("pit");
+opponentPitSeven.classList.add("opponentPitSeven");
+opponentPitSeven.setAttribute("id", "pitSeven");
+opponentPitField.appendChild(opponentPitSeven);
 
-//PLAYER MANCALA
-const playerMancala = document.createElement("div");
-playerMancala.classList.add("playerMancala");
-playerMancala.setAttribute("id", "mancalaSix");
-actionField.appendChild(playerMancala);
+//  pitEight
+const opponentPitEight = document.createElement("div");
+opponentPitEight.classList.add("pit");
+opponentPitEight.classList.add("opponentPitEight");
+opponentPitEight.setAttribute("id", "pitEight");
+opponentPitField.appendChild(opponentPitEight);
+
+//  pitNine
+const opponentPitNine = document.createElement("div");
+opponentPitNine.classList.add("pit");
+opponentPitNine.classList.add("opponentPitNine");
+opponentPitNine.setAttribute("id", "pitNine");
+opponentPitField.appendChild(opponentPitNine);
+
+//  pitTen
+const opponentPitTen = document.createElement("div");
+opponentPitTen.classList.add("pit");
+opponentPitTen.classList.add("opponentPitTen");
+opponentPitTen.setAttribute("id", "pitTen");
+opponentPitField.appendChild(opponentPitTen);
+
+//  pitEleven
+const opponentPitEleven = document.createElement("div");
+opponentPitEleven.classList.add("pit");
+opponentPitEleven.classList.add("opponentPitEleven");
+opponentPitEleven.setAttribute("id", "pitEleven");
+opponentPitField.appendChild(opponentPitEleven);
+
+//  pitTwelve
+const opponentPitTwelve = document.createElement("div");
+opponentPitTwelve.classList.add("pit");
+opponentPitTwelve.classList.add("opponentPitTwelve");
+opponentPitTwelve.setAttribute("id", "pitTwelve");
+opponentPitField.appendChild(opponentPitTwelve);
 
 //OPPONENT MANCALA
 const opponentMancala = document.createElement("div");
+opponentMancala.classList.add("mancala");
 opponentMancala.classList.add("opponentMancala");
 opponentMancala.setAttribute("id", "mancalaThirteen");
 actionField.appendChild(opponentMancala);
@@ -259,11 +454,11 @@ secondPlayer.innerText = second_Player.playerName;
 /*const alpha = "abcdefg";
 
 const searchTerm = "a";
-const shiftAmtt = 2;
+const shiftAmt = 2;
 const indexOfFirst = alpha.indexOf(searchTerm);
-const newIndex = indexOfFirst + (shiftAmtt % alpha.length);
+const newIndex = indexOfFirst + (shiftAmt % alpha.length);
 const newLetter = alpha[newIndex];
-//modulous operator
+//modulus operator
 //-------------> ex. 7 % 6
 
 console.log({ searchTerm, indexOfFirst, newIndex, newLetter });*/

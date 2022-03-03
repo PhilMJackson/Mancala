@@ -45,12 +45,90 @@ body {
 
 .playArea {
   display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  background-color: burlywood;
+  border-radius: 0.5rem;
+  height: 20rem;
+}
+
+.pipCounterField {
+  display: flex;
+  margin: 0 1rem;
+  padding: 0 1rem;
+  flex-grow: 0.25;
+}
+
+.playerPipCounterField {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#opponentPipCounterField {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.pipCounter {
+  background-color: rgb(221, 169, 101);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-inline: 2.75em;
+}
+#pipCounterThirteen {
 }
 
 .actionField {
   display: flex;
+  flex-grow: 4;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgb(224, 144, 39);
+  border-radius: 0.5rem;
+  margin: 0 1rem;
+  padding: 1rem;
 }
 
+.pitField {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  background-color: rgb(160, 101, 25);
+  width: 70%;
+  margin: 0 1rem;
+}
+
+.mancala {
+  background-color: rgb(160, 101, 25);
+  width: 15%;
+}
+
+.singlePitField {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 50%;
+}
+
+.opponentPitField {
+  flex-direction: row-reverse;
+}
+
+.pit {
+  display: flex;
+  background-color: rgb(75, 47, 16);
+  width: 16.66%;
+  margin: 1rem;
+}
+
+.playerMancala {
+}
+
+.opponentMancala {
+}
 .lowerBar {
   display: flex;
   justify-content: flex-end;
