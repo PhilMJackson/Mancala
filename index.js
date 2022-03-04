@@ -77,20 +77,6 @@ let mancalaThirteen = {
   pipNumber: playField[13],
 };
 
-function buildInitialState() {}
-
-//rerender game after selecting pips
-function renderState() {}
-
-// maybe a dozen or so helper functions for tiny pieces of the interface
-
-// listeners
-function onBoardClick() {
-  // update state, maybe with another dozen or so helper functions...
-
-  renderState(); // show the user the new state
-}
-
 //TOP BAR
 //  Where reset button, game title and toggle button are located
 const topBar = document.createElement("div");
@@ -130,14 +116,11 @@ const upperBar = document.createElement("div");
 upperBar.classList.add("upperBar");
 board.appendChild(upperBar);
 
-//FIRST PLAYER NAME
-// Click to rename Player
-//      When Solo, only Player One will will be able to renamed
-//      When Two Player, Both Player Names can be edited
-const firstPlayer = document.createElement("div");
-firstPlayer.classList.add("playerOne");
-upperBar.appendChild(firstPlayer);
-firstPlayer.innerText = first_Player.playerName;
+//SECOND PLAYER NAME
+const secondPlayer = document.createElement("div");
+secondPlayer.classList.add("playerTwo");
+upperBar.appendChild(secondPlayer);
+secondPlayer.innerText = second_Player.playerName;
 
 //PLAY AREA
 //  # of Pips in each Pit
@@ -277,12 +260,20 @@ opponentPipCounterThirteen.setAttribute("id", "pipCounterThirteen");
 opponentPipCounterField.appendChild(opponentPipCounterThirteen);
 opponentPipCounterThirteen.innerText = mancalaThirteen.pipNumber;
 
-//PLAYER MANCALA
-const playerMancala = document.createElement("div");
-playerMancala.classList.add("mancala");
-playerMancala.classList.add("playerMancala");
-playerMancala.setAttribute("id", "mancalaSix");
-actionField.appendChild(playerMancala);
+//PIPS
+
+//OPPONENT MANCALA FIELD
+const opponentMancalaField = document.createElement("div");
+opponentMancalaField.classList.add("mancalaField");
+opponentMancalaField.classList.add("opponentMancalaField");
+actionField.appendChild(opponentMancalaField);
+
+//OPPONENT MANCALA PIT
+const opponentMancalaPit = document.createElement("div");
+opponentMancalaPit.classList.add("mancalaPit");
+opponentMancalaPit.classList.add("opponentMancalaPit");
+opponentMancalaPit.setAttribute("id", "mancalaThirteen");
+opponentMancalaField.appendChild(opponentMancalaPit);
 
 //PIT FIELD
 const pitField = document.createElement("div");
@@ -390,12 +381,18 @@ opponentPitTwelve.classList.add("opponentPitTwelve");
 opponentPitTwelve.setAttribute("id", "pitTwelve");
 opponentPitField.appendChild(opponentPitTwelve);
 
-//OPPONENT MANCALA
-const opponentMancala = document.createElement("div");
-opponentMancala.classList.add("mancala");
-opponentMancala.classList.add("opponentMancala");
-opponentMancala.setAttribute("id", "mancalaThirteen");
-actionField.appendChild(opponentMancala);
+//PLAYER MANCALA FIELD
+const playerMancalaField = document.createElement("div");
+playerMancalaField.classList.add("mancalaField");
+playerMancalaField.classList.add("playerMancalaField");
+actionField.appendChild(playerMancalaField);
+
+//PLAYER MANCALA PIT
+const playerMancalaPit = document.createElement("div");
+playerMancalaPit.classList.add("mancalaPit");
+playerMancalaPit.classList.add("playerMancalaPit");
+playerMancalaPit.setAttribute("id", "mancalaSix");
+playerMancalaField.appendChild(playerMancalaPit);
 
 //PIP
 const pip = document.createElement("div");
@@ -407,11 +404,28 @@ const lowerBar = document.createElement("div");
 lowerBar.classList.add("lowerBar");
 board.appendChild(lowerBar);
 
-//SECOND PLAYER NAME
-const secondPlayer = document.createElement("div");
-secondPlayer.classList.add("playerTwo");
-lowerBar.appendChild(secondPlayer);
-secondPlayer.innerText = second_Player.playerName;
+//FIRST PLAYER NAME
+// Click to rename Player
+//      When Solo, only Player One will will be able to renamed
+//      When Two Player, Both Player Names can be edited
+const firstPlayer = document.createElement("div");
+firstPlayer.classList.add("playerOne");
+lowerBar.appendChild(firstPlayer);
+firstPlayer.innerText = first_Player.playerName;
+
+function buildInitialState() {}
+
+//rerender game after selecting pips
+function renderState() {}
+
+// maybe a dozen or so helper functions for tiny pieces of the interface
+
+// listeners
+function onBoardClick() {
+  // update state, maybe with another dozen or so helper functions...
+
+  renderState(); // show the user the new state
+}
 
 //extra turn when ending in own mancala
 
