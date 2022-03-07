@@ -93,7 +93,7 @@ body {
   flex: 1;
 }
 
-.playerTwo {
+#playerTwo {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -248,7 +248,7 @@ body {
   flex: 1;
 }
 
-.playerOne {
+#playerOne {
   display: flex;
   flex-direction: row;
   align-items: flex-start;

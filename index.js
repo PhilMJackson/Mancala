@@ -72,8 +72,9 @@ board.appendChild(upperBar);
 
 //SECOND PLAYER NAME
 const secondPlayer = document.createElement("div");
-secondPlayer.classList.add("playerTwo");
+secondPlayer.setAttribute("id", "playerTwo");
 upperBar.appendChild(secondPlayer);
+document.getElementById("playerTwo").contentEditable = true;
 secondPlayer.innerHTML = gameState.second_Player;
 
 //PLAY AREA
@@ -375,8 +376,9 @@ board.appendChild(lowerBar);
 //      When Solo, only Player One will will be able to renamed
 //      When Two Player, Both Player Names can be edited
 const firstPlayer = document.createElement("div");
-firstPlayer.classList.add("playerOne");
+firstPlayer.setAttribute("id", "playerOne");
 lowerBar.appendChild(firstPlayer);
+document.getElementById("playerOne").contentEditable = true;
 firstPlayer.innerText = gameState.first_Player;
 
 //PIPS AND DRAWING THEM
@@ -393,6 +395,7 @@ const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`
 
 activePlayer.innerHTML = currentPlayerTurn();
 */
+
 function handleCellPlayed(clickedPitIndex) {
   let indexValue = gameState.playField[clickedPitIndex];
   for (let i = 1; i < indexValue + 1; i++) {
@@ -406,10 +409,27 @@ function handleCellPlayed(clickedPitIndex) {
   gameState.playField[clickedPitIndex] = 0;
   console.log(gameState.playField);
   buildState();
+  handleResultValidation();
+  handlePlayerChange();
 }
+
+function handleResultValidation() {
+  let gameWon = false;
+  let pOneWinCheckArr = [];
+  let pTwoWinCheckArr = [];
+  for (let i = 1; i < 6; i++) {
+    pOneWinCheckArr.push(gameState.playField[i]);
+  }
+  for (let k = 7; k < 13; k++) {
+    pTwoWinCheckArr.push(gameState.playField[k]);
+  }
+  if (!pOneWinCheckArr) {
+    winThisGameVerification();
+  }
+}
+
 function handlePlayerChange() {}
 
-function handleResultValidation() {}
 //move pips
 function handlePitClick(clickedPitEvent) {
   const clickedPit = clickedPitEvent.target;
@@ -418,17 +438,22 @@ function handlePitClick(clickedPitEvent) {
   handleCellPlayed(clickedPitIndex);
   handleResultValidation();
 }
+
+//RESTART GAME
 function handleRestartGame() {
   gameState.playField = [
     4, 4, 4, 4, 4, 4, 0, /* p1 */ 4, 4, 4, 4, 4, 4, 0 /* p2 */,
   ];
   gameState.currentPlayer = 0;
+  firstPlayer.innerHTML = gameState.first_Player;
+  secondPlayer.innerHTML = gameState.second_Player;
   buildState();
 }
-
+//BUTTONS
 document
   .querySelectorAll(".pit")
   .forEach((pit) => pit.addEventListener("click", handlePitClick));
+
 resetButton.addEventListener("click", handleRestartGame);
 
 //  Build Board
