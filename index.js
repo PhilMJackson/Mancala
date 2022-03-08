@@ -243,7 +243,7 @@ const opponentMancalaPit = document.createElement("div");
 opponentMancalaPit.classList.add("pit");
 opponentMancalaPit.classList.add("mancalaPit");
 opponentMancalaPit.classList.add("opponentMancalaPit");
-opponentMancalaPit.setAttribute("id", "mancalaThirteen");
+opponentMancalaPit.setAttribute("id", "13");
 opponentMancalaField.appendChild(opponentMancalaPit);
 
 //PIT FIELD
@@ -314,42 +314,42 @@ pitField.appendChild(opponentPitField);
 const opponentPitSeven = document.createElement("div");
 opponentPitSeven.classList.add("pit");
 opponentPitSeven.classList.add("opponentPitSeven");
-opponentPitSeven.setAttribute("id", "pitSeven");
+opponentPitSeven.setAttribute("id", "7");
 opponentPitField.appendChild(opponentPitSeven);
 
 //  pitEight
 const opponentPitEight = document.createElement("div");
 opponentPitEight.classList.add("pit");
 opponentPitEight.classList.add("opponentPitEight");
-opponentPitEight.setAttribute("id", "pitEight");
+opponentPitEight.setAttribute("id", "8");
 opponentPitField.appendChild(opponentPitEight);
 
 //  pitNine
 const opponentPitNine = document.createElement("div");
 opponentPitNine.classList.add("pit");
 opponentPitNine.classList.add("opponentPitNine");
-opponentPitNine.setAttribute("id", "pitNine");
+opponentPitNine.setAttribute("id", "9");
 opponentPitField.appendChild(opponentPitNine);
 
 //  pitTen
 const opponentPitTen = document.createElement("div");
 opponentPitTen.classList.add("pit");
 opponentPitTen.classList.add("opponentPitTen");
-opponentPitTen.setAttribute("id", "pitTen");
+opponentPitTen.setAttribute("id", "10");
 opponentPitField.appendChild(opponentPitTen);
 
 //  pitEleven
 const opponentPitEleven = document.createElement("div");
 opponentPitEleven.classList.add("pit");
 opponentPitEleven.classList.add("opponentPitEleven");
-opponentPitEleven.setAttribute("id", "pitEleven");
+opponentPitEleven.setAttribute("id", "11");
 opponentPitField.appendChild(opponentPitEleven);
 
 //  pitTwelve
 const opponentPitTwelve = document.createElement("div");
 opponentPitTwelve.classList.add("pit");
 opponentPitTwelve.classList.add("opponentPitTwelve");
-opponentPitTwelve.setAttribute("id", "pitTwelve");
+opponentPitTwelve.setAttribute("id", "12");
 opponentPitField.appendChild(opponentPitTwelve);
 
 //PLAYER MANCALA FIELD
@@ -363,7 +363,7 @@ const playerMancalaPit = document.createElement("div");
 playerMancalaPit.classList.add("pit");
 playerMancalaPit.classList.add("mancalaPit");
 playerMancalaPit.classList.add("playerMancalaPit");
-playerMancalaPit.setAttribute("id", "mancalaSix");
+playerMancalaPit.setAttribute("id", "6");
 playerMancalaField.appendChild(playerMancalaPit);
 
 //LOWER BAR
@@ -407,25 +407,44 @@ function handleCellPlayed(clickedPitIndex) {
     }
   }
   gameState.playField[clickedPitIndex] = 0;
-  console.log(gameState.playField);
+  console.log("Pips moved!");
   buildState();
+  stealPipsVerification(clickedPitIndex);
   handleResultValidation();
   handlePlayerChange();
 }
 
 function handleResultValidation() {
   let gameWon = false;
-  let pOneWinCheckArr = [];
-  let pTwoWinCheckArr = [];
-  for (let i = 1; i < 6; i++) {
-    pOneWinCheckArr.push(gameState.playField[i]);
+  let completionStr = "000000";
+  let pOneWinCheckStr = "";
+  let pTwoWinCheckStr = "";
+  for (let i = 0; i < 6; i++) {
+    pOneWinCheckStr += gameState.playField[i];
   }
   for (let k = 7; k < 13; k++) {
-    pTwoWinCheckArr.push(gameState.playField[k]);
+    pTwoWinCheckStr += gameState.playField[k];
   }
-  if (!pOneWinCheckArr) {
+  if (completionStr === pOneWinCheckStr || completionStr === pTwoWinCheckStr) {
     winThisGameVerification();
   }
+}
+
+function stealPipsVerification(clickedPitIndex) {}
+
+function winThisGameVerification() {
+  console.log("Win?");
+  for (let i = 1; i < 6; i++) {
+    let indexValue = gameState.playField[i];
+    gameState.playField[6] += indexValue;
+    gameState.playField[i] = 0;
+  }
+  for (let i = 7; i < 13; i++) {
+    let indexValue = gameState.playField[i];
+    gameState.playField[13] += indexValue;
+    gameState.playField[i] = 0;
+  }
+  buildState();
 }
 
 function handlePlayerChange() {}
@@ -435,8 +454,37 @@ function handlePitClick(clickedPitEvent) {
   const clickedPit = clickedPitEvent.target;
   const clickedPitIndex = parseInt(clickedPit.getAttribute("id"));
   console.log(clickedPitIndex);
-  handleCellPlayed(clickedPitIndex);
-  handleResultValidation();
+  if (gameState.currentPlayer === 0) {
+    console.log(gameState.currentPlayer);
+    if (
+      clickedPitIndex === 0 ||
+      clickedPitIndex === 1 ||
+      clickedPitIndex === 2 ||
+      clickedPitIndex === 3 ||
+      clickedPitIndex === 4 ||
+      clickedPitIndex === 5
+    ) {
+      handleCellPlayed(clickedPitIndex);
+    } else {
+      console.log("Not your pit");
+      return;
+    }
+  }
+  if (gameState.currentPlayer === 1) {
+    if (
+      clickedPitIndex === 7 ||
+      clickedPitIndex === 8 ||
+      clickedPitIndex === 9 ||
+      clickedPitIndex === 10 ||
+      clickedPitIndex === 11 ||
+      clickedPitIndex === 12
+    ) {
+      handleCellPlayed(clickedPitIndex);
+    } else {
+      console.log("Not your pit");
+      return;
+    }
+  }
 }
 
 //RESTART GAME
